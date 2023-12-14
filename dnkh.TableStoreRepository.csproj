@@ -1,19 +1,16 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net6.0</TargetFramework>
+    <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.0.1</Version>
+    <Version>0.0.3</Version>
     <Authors>Christian Will</Authors>
     <Description>Package for storing an Entities in an Azure Table. Can be used with pocos, no need for inheriting from TableEntity</Description>
     <RepositoryUrl>https://github.com/dnkh/TableStoreRepository</RepositoryUrl>
     <RepositoryType>git</RepositoryType>
   </PropertyGroup>
-
   <ItemGroup>
     <PackageReference Include="Azure.Data.Tables" Version="12.6.1" />
     <PackageReference Include="Microsoft.Azure.Cosmos.Table" Version="1.0.8" />
   </ItemGroup>
-
 </Project>
