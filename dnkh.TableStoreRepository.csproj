@@ -3,7 +3,7 @@
     <TargetFramework>net7.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-    <Version>0.0.3</Version>
+    <Version>0.0.4</Version>
     <Authors>Christian Will</Authors>
     <Description>Package for storing an Entities in an Azure Table. Can be used with pocos, no need for inheriting from TableEntity</Description>
     <RepositoryUrl>https://github.com/dnkh/TableStoreRepository</RepositoryUrl>

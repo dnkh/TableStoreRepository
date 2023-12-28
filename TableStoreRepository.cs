@@ -46,10 +46,29 @@ public class TableStoreRepository<T> : IRepository<T>
 
     public virtual async Task<T?> GetByGuidAsync(Guid id)
     {
-        var cloudTable = await GetCloudTable();
-        var queryResult = cloudTable.ExecuteQuery(new TableQuery<TableEntityAdapter<T>>().Where(TableQuery.GenerateFilterCondition("RowKey", QueryComparisons.Equal, id.ToString())));
+        return (await GetByStringPropertyAsync("RowKey", id.ToString())).FirstOrDefault();
+    }
 
-        return queryResult.Select(x => x.OriginalEntity).FirstOrDefault();
+    public virtual async Task<IEnumerable<T?>> GetByGuidPropertyAsync(string popertyName, Guid value)
+    {
+        var cloudTable = await GetCloudTable();
+        var queryResult = cloudTable.ExecuteQuery(new TableQuery<TableEntityAdapter<T>>().Where(TableQuery.GenerateFilterConditionForGuid(popertyName, QueryComparisons.Equal, value)));
+
+        return queryResult.Select(x => x.OriginalEntity);
+    }
+    public virtual async Task<IEnumerable<T?>> GetByIntPropertyAsync(string popertyName, int value)
+    {
+        var cloudTable = await GetCloudTable();
+        var queryResult = cloudTable.ExecuteQuery(new TableQuery<TableEntityAdapter<T>>().Where(TableQuery.GenerateFilterConditionForInt(popertyName, QueryComparisons.Equal, value)));
+
+        return queryResult.Select(x => x.OriginalEntity);
+    }
+    public virtual async Task<IEnumerable<T?>> GetByStringPropertyAsync(string popertyName, string value)
+    {
+        var cloudTable = await GetCloudTable();
+        var queryResult = cloudTable.ExecuteQuery(new TableQuery<TableEntityAdapter<T>>().Where(TableQuery.GenerateFilterCondition(popertyName, QueryComparisons.Equal, value)));
+
+        return queryResult.Select(x => x.OriginalEntity);
     }
 
     

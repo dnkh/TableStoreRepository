@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace dnkh.TableStoreRepository;
 
-public class TableStoreConfiguration
+public record TableStoreConfiguration
 {
     public  string StorageUri { get; set; }
     public  string SASToken { get; set; }
